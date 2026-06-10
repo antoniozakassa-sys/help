@@ -166,3 +166,24 @@ class SecondActivity : AppCompatActivity() {
     }
 }
 
+How to create a Toast.
+import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+class MainActivity : AppCompatActivity() {
+override fun onCreate(savedInstanceState: Bundle?) {
+super.onCreate(savedInstanceState)
+setContentView(R.layout.activity_main)
+// Link button from XML
+val btnToast = findViewById&lt;Button&gt;(R.id.btnToast)
+// Show toast when button is clicked
+btnToast.setOnClickListener {
+Toast.makeText(
+this,
+&quot;Button clicked!&quot;,
+Toast.LENGTH_SHORT
+).show()
+}
+}
+}
