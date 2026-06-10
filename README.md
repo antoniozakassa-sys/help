@@ -171,12 +171,16 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+
 class MainActivity : AppCompatActivity() {
 override fun onCreate(savedInstanceState: Bundle?) {
 super.onCreate(savedInstanceState)
 setContentView(R.layout.activity_main)
+
+
 // Link button from XML
 val btnToast = findViewById&lt;Button&gt;(R.id.btnToast)
+
 // Show toast when button is clicked
 btnToast.setOnClickListener {
 Toast.makeText(
@@ -187,3 +191,78 @@ Toast.LENGTH_SHORT
 }
 }
 }
+# Horizon AI App
+
+An Android application built with Kotlin as part of a practicum, demonstrating core Android UI concepts and Kotlin fundamentals.
+
+## Overview
+
+This project covers foundational Android development patterns including UI widgets, event handling, and Kotlin method types. It serves as a hands-on reference for building interactive Android screens.
+
+## Concepts Covered
+
+- **Toast messages** — displaying short popup notifications using `Toast.makeText()`
+- **Switch widget** — handling toggle state changes with `setOnCheckedChangeListener`
+- **Kotlin methods** — all six method types (with/without parameters, with/without return values)
+- **`when` expressions** — matching string values and number ranges
+- **Layout structure** — `LinearLayout` with `TextView` and `Button` in `activity_main.xml`
+
+## Project Structure
+
+```
+app/
+├── res/
+│   └── layout/
+│       └── activity_main.xml   # Main layout with Button and TextView
+└── java/
+    └── MainActivity.kt         # All logic: methods, listeners, widget bindings
+```
+
+## Setup
+
+1. Clone the repository
+2. Open in **Android Studio**
+3. Let Gradle sync
+4. Run on an emulator or physical device (Android 5.0+)
+
+## Key Patterns
+
+### Method placement
+Methods are defined **inside the class but outside `onCreate()`**, then called from within `onCreate()`:
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+
+    fun myMethod() { }  // defined here
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        myMethod()      // called here
+    }
+}
+```
+
+### Showing a Toast
+
+```kotlin
+Toast.makeText(this, "Hello!", Toast.LENGTH_SHORT).show()
+```
+
+### Handling a Switch
+
+```kotlin
+mySwitch.setOnCheckedChangeListener { _, isChecked ->
+    if (isChecked) {
+        Toast.makeText(this, "Switch is ON", Toast.LENGTH_SHORT).show()
+    } else {
+        Toast.makeText(this, "Switch is OFF", Toast.LENGTH_SHORT).show()
+    }
+}
+```
+
+## Built With
+
+- [Kotlin](https://kotlinlang.org/)
+- [Android SDK](https://developer.android.com/)
+- AndroidX AppCompat
